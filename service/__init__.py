@@ -1,7 +1,6 @@
 # flake8: noqa: F401
 # pylint: disable=wrong-import-position
 """Módulo '__init__' de georef-ar-api
-
 Crea la aplicación Flask de la API de Georef.
 """
 

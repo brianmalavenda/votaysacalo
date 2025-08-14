@@ -1,3 +1,25 @@
+## Instalar dependencias
+* instalar python3.10
+sudo apt install python3.10 python3.10-venv
+
+* crear un entorno virtual y activarlo
+python3 -m venv ~/entorno_python
+source ~/entorno_python/bin/activate
+
+* ejecutar la instalación de las dependencias
+pip install -r requirements-dev.txt
+
+* listar las dependencias instaladas
+pip list
+
+pip install --upgrade pip
+pip install "urllib3<2.0.0" "chardet<4.0.0"  # Resolver el warning de requests
+pip install "geojson==2.5.0"  # Versión compatible con Python 3.10
+pip install "nltk==3.8.1"  # Versión estable
+pip install "requests==2.31.0"  # Versión moderna pero compatible
+pip install "elasticsearch==7.17.9"  # Versión estable
+pip install flask  # Instalar Flask
+
 # georef-ar-api
 [![Build Status](https://travis-ci.org/datosgobar/georef-ar-api.svg?branch=master)](https://travis-ci.org/datosgobar/georef-ar-api)
 ![Docs Status](https://readthedocs.org/projects/georef-ar-api/badge/?version=latest)

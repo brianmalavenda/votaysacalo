@@ -72,7 +72,7 @@ def handle_405(_):
 
 
 # API v1.0
-bp_v1_0 = Blueprint('georef_v1.0', __name__)
+bp_v1_0 = Blueprint('georef_v1_0', __name__)
 
 add_complete_downloads(bp_v1_0, current_app.config['COMPLETE_DOWNLOAD_URLS'])
 
@@ -127,4 +127,4 @@ def get_location():
 app.register_blueprint(bp_v1_0, url_prefix='/api')
 
 # v1.0
-app.register_blueprint(bp_v1_0, url_prefix='/api/v1.0')
+# app.register_blueprint(bp_v1_0, url_prefix='/api/v1.0')

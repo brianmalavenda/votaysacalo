@@ -3,7 +3,11 @@
 Contiene funciones y clases de varias utilidades.
 """
 
-from flask.json import JSONEncoder
+try:
+    from flask.json.provider import JSONEncoder  # Flask 2.3+
+except ImportError:
+    from flask.json import JSONEncoder  # Flask <2.3
+    
 from georef_ar_address.address_data import AddressData
 from service import names as N
 

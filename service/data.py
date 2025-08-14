@@ -44,7 +44,13 @@ def elasticsearch_connection(hosts, sniff=False, sniffer_timeout=60):
     """
     try:
         options = {
-            'hosts': hosts
+            'hosts': [f"http://{options['host']}:{options['port']}"],  # URL explícita
+            'sniff_on_start': False,
+            'sniff_on_connection_fail': False,
+            'max_retries': 5,
+            'retry_on_timeout': True,
+            'timeout': 120,
+            'http_compress': True
         }
 
         if sniff:

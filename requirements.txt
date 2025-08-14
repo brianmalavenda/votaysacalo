@@ -1,10 +1,17 @@
-elasticsearch-dsl==7.0.0
-Flask==2.0.0
+# Versiones optimizadas para Python 3.10:
+elasticsearch==7.17.9
+Flask==2.2.5
+Werkzeug==2.2.3  # Más estable con Flask 2.2.5
 georef-ar-address==0.0.9
-geojson==2.3.0
+geojson==2.5.0
+elasticsearch-dsl==7.4.0
 gunicorn[gevent]==19.9.0
-requests==2.20.0
-shapely==1.6.4.post2
-pyshp==2.0.1
+gevent==23.9.1
+greenlet==3.0.3
+requests==2.31.0
+urllib3==1.26.18
+nltk==3.4  # Requerido por georef-ar-address
+# Dependencias geoespaciales
+pyshp==2.3.1
+shapely==1.8.5
 tqdm==4.31.1
-Werkzeug==2.3.7
