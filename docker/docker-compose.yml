@@ -8,12 +8,22 @@ services:
       - node.name=es01
       - cluster.name=es-docker-cluster
       - discovery.type=single-node
+      - xpack.security.enabled=false  # Desactiva seguridad para desarrollo
       - bootstrap.memory_lock=true  # disable swapping out parts of the JVM heap to disk (https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration-memory.html)
       - "ES_JAVA_OPTS=$JAVA_OPTS"
+      # a partir de aca son variables que agrego para que funcione en docker
+      - network.host=0.0.0.0
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
     ulimits:
       memlock:  # configures the range of memory that ElasticSearch will use. Setting this to –1 means unlimited.
         soft: -1
         hard: -1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     volumes:
       - data01:/usr/share/elasticsearch/data
     ports:
@@ -26,10 +36,10 @@ services:
       dockerfile: ./docker/Dockerfile_api
     image: datosgobar/georef-api_app
     container_name: georef-api_app
-    environment:
+    environment:  
       - "GEOREF_CONFIG=config/georef.cfg"
       - "FLASK_APP=service/__init__.py"
-      - "FLASK_ENV=development"
+      - "FLASK_DEBUG=1"
     command: flask run --host=0.0.0.0 --port=5000
     volumes:
       - ../config:/opt/app-root/src/georef-ar-api/config:ro
